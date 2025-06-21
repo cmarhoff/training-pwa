@@ -82,8 +82,3 @@ button.addEventListener('click', () => {
 
 showExercise();
 
-/* vorher definierte Funktionen... */
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
-
