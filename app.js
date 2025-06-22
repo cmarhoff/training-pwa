@@ -69,6 +69,7 @@ function playBeep() {
 
 button.addEventListener('click', () => {
   // iOS Safari: Audio muss zuerst "entsperrt" werden
+  console.log("BUTTON wurde geklickt!");
   if (!audio) {
     audio = new Audio('beep.mp3');
     audio.play().then(() => {
