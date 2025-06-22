@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ex = exercises[current];
 
     exerciseDisplay.textContent = ex.name;
-    infoDisplay.textContent = ex.duration > 0 ? `${ex.display} secs` : `${ex.display} reps`;
+    infoDisplay.textContent = ex.display;
     timeDisplay.textContent = ex.initial;
 
     counter = ex.initial;
