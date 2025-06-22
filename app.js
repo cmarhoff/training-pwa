@@ -1,11 +1,10 @@
-// app.js – überarbeitete Version mit iPhone-kompatiblem Beep
+// app.js – überarbeitete Version ohne Ton, aber mit größerem Button für besseren visuellen Wechsel
 
 document.addEventListener("DOMContentLoaded", () => {
   let current = 0;
   let timer = null;
   let counter = 0;
   let countingUp = false;
-  let audio = null;
 
   const exerciseDisplay = document.getElementById('exercise');
   const timeDisplay = document.getElementById('time');
@@ -24,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     button.textContent = "Start";
     button.classList.remove("running");
     button.classList.add("ready");
+    button.style.fontSize = "3rem";
+    button.style.padding = "2rem 4rem";
   }
 
   function startTimer() {
@@ -33,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     button.classList.remove("ready");
     button.classList.add("running");
     button.textContent = "Stop";
+    button.style.fontSize = "3rem";
+    button.style.padding = "2rem 4rem";
 
     if (countingUp) {
       counter = 0;
@@ -47,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
         counter--;
         timeDisplay.textContent = counter;
         if (counter <= 0) {
-          playBeep();
           stopTimer();
         }
       }, 1000);
@@ -57,28 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function stopTimer() {
     clearInterval(timer);
     timer = null;
+    document.body.classList.add("flash");
+    setTimeout(() => document.body.classList.remove("flash"), 300);
     current++;
     showExercise();
   }
 
-  function playBeep() {
-    if (audio) {
-      audio.currentTime = 0;
-      audio.play().catch(e => console.log("Ton konnte nicht abgespielt werden:", e));
-    }
-  }
-
   button.addEventListener('click', () => {
     console.log("BUTTON wurde geklickt!");
-    // iOS Safari: Audio muss zuerst "entsperrt" werden
-    if (!audio) {
-      audio = new Audio('beep.mp3');
-      audio.play().then(() => {
-	    console.log("audio play ok!");
-        //audio.pause();
-        audio.currentTime = 0;
-      }).catch(e => console.log("Audio-Vorbereitung fehlgeschlagen:", e));
-    }
 
     if (timer) {
       stopTimer();

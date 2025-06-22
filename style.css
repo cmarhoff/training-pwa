@@ -21,4 +21,8 @@ body {
 #startBtn.running {
   background-color: red;
 }
+.flash {
+  background-color: #ffe6e6 !important;
+  transition: background-color 0.3s;
+}
 
