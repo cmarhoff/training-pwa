@@ -13,11 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showExercise() {
     if (current >= exercises.length) {
-      exerciseDisplay.textContent = "Fertig!";
-      infoDisplay.textContent = "";
-      timeDisplay.textContent = "";
-      button.style.display = "none";
-      return;
+    exerciseDisplay.textContent = "Fertig!";
+    infoDisplay.textContent = "";
+    timeDisplay.textContent = "";
+    button.style.display = "inline-block";
+    button.textContent = "Neu starten";
+    button.classList.remove("running", "ready");
+    button.classList.add("ready");
+    button.onclick = () => {
+      current = 0;
+      button.onclick = originalClickHandler;
+      showExercise();
+    };
+    return;
     }
     const ex = exercises[current];
 
@@ -70,13 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
     showExercise();
   }
 
-  button.addEventListener('click', () => {
+  const originalClickHandler = () => {
     if (timer) {
       stopTimer();
     } else {
       startTimer();
     }
-  });
+  };
+  button.addEventListener('click', originalClickHandler);
 
   showExercise();
 });
+
