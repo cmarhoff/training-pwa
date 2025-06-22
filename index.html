@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trainings-App</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="/training-pwa/manifest.json">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <div id="container">
-    <h1 id="exercise">Start</h1>
-    <p id="time">0</p>
+  <div id="container" style="text-align: center; padding: 2rem;">
+    <h1 id="exercise" style="font-size: 2rem; margin-bottom: 0.5rem;"></h1>
+    <p id="info" style="font-size: 1.5rem; margin: 0.5rem;"></p>
+    <p id="time" style="font-size: 2.5rem; margin: 1.5rem 0;"></p>
     <button id="startBtn">Los geht's!</button>
   </div>
+
   <script src="data.js"></script>
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-  </script>
   <script src="app.js"></script>
 </body>
 </html>

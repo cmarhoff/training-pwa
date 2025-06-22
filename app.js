@@ -1,4 +1,4 @@
-// app.js – überarbeitete Version ohne Ton, aber mit größerem Button für besseren visuellen Wechsel
+// app.js – überarbeitete Version mit 3-Spalten-Datenmodell und klarer Oberfläche
 
 document.addEventListener("DOMContentLoaded", () => {
   let current = 0;
@@ -7,19 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
   let countingUp = false;
 
   const exerciseDisplay = document.getElementById('exercise');
+  const infoDisplay = document.getElementById('info');
   const timeDisplay = document.getElementById('time');
   const button = document.getElementById('startBtn');
 
   function showExercise() {
     if (current >= exercises.length) {
       exerciseDisplay.textContent = "Fertig!";
+      infoDisplay.textContent = "";
       timeDisplay.textContent = "";
       button.style.display = "none";
       return;
     }
     const ex = exercises[current];
+
     exerciseDisplay.textContent = ex.name;
-    timeDisplay.textContent = ex.duration > 0 ? ex.duration : "0";
+    infoDisplay.textContent = ex.duration > 0 ? `${ex.display} secs` : `${ex.display} reps`;
+    timeDisplay.textContent = ex.initial;
+
+    counter = ex.initial;
+    countingUp = ex.initial === 0;
+
     button.textContent = "Start";
     button.classList.remove("running");
     button.classList.add("ready");
@@ -28,9 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startTimer() {
-    const ex = exercises[current];
-    counter = ex.duration;
-    countingUp = ex.duration === 0;
     button.classList.remove("ready");
     button.classList.add("running");
     button.textContent = "Stop";
@@ -66,8 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   button.addEventListener('click', () => {
-    console.log("BUTTON wurde geklickt!");
-
     if (timer) {
       stopTimer();
     } else {

@@ -1,7 +1,7 @@
 const exercises = [
-  { name: "Flutter Kicks", duration: 10 },
-  { name: "Push Ups 8 reps", duration: 0 },
-  { name: "Vertical Jumps 8 reps", duration: 0 },
-  { name: "Plank", duration: 20 }
+  { name: "Flutter Kicks", display: "10", initial: 10 },
+  { name: "Push Ups", display: "8", initial: 0 },
+  { name: "Vertical Jumps", display: "8", initial: 0 },
+  { name: "Plank", display: "20", initial: 20 }
 ];
 
