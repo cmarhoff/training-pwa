@@ -1,17 +1,8 @@
 function playBeep() {
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const oscillator = ctx.createOscillator();
-  const gainNode = ctx.createGain();
-
-  oscillator.connect(gainNode);
-  gainNode.connect(ctx.destination);
-
-  oscillator.type = 'sine'; // kannst du auch zu "square" ändern
-  oscillator.frequency.value = 880; // Hz – Tonhöhe
-  gainNode.gain.value = 0.1;
-
-  oscillator.start();
-  oscillator.stop(ctx.currentTime + 0.2); // 0.2 Sekunden lang
+  const audio = new Audio('beep.mp3');
+  audio.play().catch(e => {
+    console.log("Ton konnte nicht abgespielt werden:", e);
+  });
 }
 
 let current = 0;
