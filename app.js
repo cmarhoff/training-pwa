@@ -16,22 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
     exerciseDisplay.textContent = "Fertig!";
     infoDisplay.textContent = "";
     timeDisplay.textContent = "";
-    button.style.display = "inline-block";
-    button.textContent = "Neu starten";
-    button.classList.remove("running", "ready");
-    button.classList.add("ready");
-    button.onclick = () => {
-      current = 0;
-      button.onclick = originalClickHandler;
-      showExercise();
-    };
+    button.style.display = "none";
     return;
     }
     const ex = exercises[current];
 
     exerciseDisplay.textContent = ex.name;
+    exerciseDisplay.style.fontSize = "3rem";
     infoDisplay.textContent = ex.display;
+    infoDisplay.style.fontSize = "2.5rem";
     timeDisplay.textContent = ex.initial;
+    timeDisplay.style.fontSize = "2rem";
 
     counter = ex.initial;
     countingUp = ex.initial === 0;
@@ -78,14 +73,13 @@ document.addEventListener("DOMContentLoaded", () => {
     showExercise();
   }
 
-  const originalClickHandler = () => {
+  button.addEventListener('click', () => {
     if (timer) {
       stopTimer();
     } else {
       startTimer();
     }
-  };
-  button.addEventListener('click', originalClickHandler);
+  });
 
   showExercise();
 });
