@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(timer);
     timer = null;
     document.body.classList.add("flash");
-    setTimeout(() => document.body.classList.remove("flash"), 300);
+    setTimeout(() => document.body.classList.remove("flash"), 600);
     current++;
     showExercise();
   }
