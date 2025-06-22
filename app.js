@@ -1,14 +1,10 @@
-function playBeep() {
-  const audio = new Audio('beep.mp3');
-  audio.play().catch(e => {
-    console.log("Ton konnte nicht abgespielt werden:", e);
-  });
-}
+// app.js – überarbeitete Version mit iPhone-kompatiblem Beep
 
 let current = 0;
 let timer = null;
 let counter = 0;
 let countingUp = false;
+let audio = null;
 
 const exerciseDisplay = document.getElementById('exercise');
 const timeDisplay = document.getElementById('time');
@@ -36,6 +32,7 @@ function startTimer() {
   button.classList.remove("ready");
   button.classList.add("running");
   button.textContent = "Stop";
+
   if (countingUp) {
     counter = 0;
     timeDisplay.textContent = counter;
@@ -49,7 +46,7 @@ function startTimer() {
       counter--;
       timeDisplay.textContent = counter;
       if (counter <= 0) {
-        playBeep();  // ← Ton abspielen
+        playBeep();
         stopTimer();
       }
     }, 1000);
@@ -63,7 +60,23 @@ function stopTimer() {
   showExercise();
 }
 
+function playBeep() {
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play().catch(e => console.log("Ton konnte nicht abgespielt werden:", e));
+  }
+}
+
 button.addEventListener('click', () => {
+  // iOS Safari: Audio muss zuerst "entsperrt" werden
+  if (!audio) {
+    audio = new Audio('beep.mp3');
+    audio.play().then(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }).catch(e => console.log("Audio-Vorbereitung fehlgeschlagen:", e));
+  }
+
   if (timer) {
     stopTimer();
   } else {
