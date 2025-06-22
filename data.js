@@ -4,4 +4,3 @@ const exercises = [
   { name: "Vertical Jumps", display: "8", initial: 0 },
   { name: "Plank", display: "20", initial: 20 }
 ];
-
