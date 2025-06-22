@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!audio) {
       audio = new Audio('beep.mp3');
       audio.play().then(() => {
+	    console.log("audio play ok!");
         audio.pause();
         audio.currentTime = 0;
       }).catch(e => console.log("Audio-Vorbereitung fehlgeschlagen:", e));
