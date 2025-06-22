@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const infoDisplay = document.getElementById('info');
   const timeDisplay = document.getElementById('time');
   const button = document.getElementById('startBtn');
+  const restartButton = document.getElementById('restartBtn');
 
   function showExercise() {
     if (current >= exercises.length) {
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     infoDisplay.textContent = "";
     timeDisplay.textContent = "";
     button.style.display = "none";
+    restartButton.style.display = "inline-block";
     return;
     }
     const ex = exercises[current];
@@ -82,5 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   showExercise();
+
+  restartButton.addEventListener('click', () => {
+    current = 0;
+    restartButton.style.display = "none";
+    button.style.display = "inline-block";
+    showExercise();
+  });
 });
 
