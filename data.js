@@ -15,5 +15,5 @@ const exercises = [
   { name: "Pike Push Up", display: "4 reps", initial: 0 },
   { name: "Plank", display: "20 secs", initial: 20 },
   { name: "Diamond Push Up", display: "3 reps", initial: 0 },
-  { name: "Flutter Kicks", display: "10 secs", initial: 10 }
+  { name: "Sit Ups", display: "5 reps", initial: 0 }
 ];
