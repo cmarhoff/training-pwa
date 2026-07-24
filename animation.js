@@ -66,12 +66,31 @@
     rightKnee: point(180, 132), rightFoot: point(198, 150)
   });
 
+  const burpeeSquat = pose({
+    // Tiefe Hocke, beide Hände am Boden.
+    head: point(160, 72), neck: point(160, 96), hip: point(160, 145),
+    leftElbow: point(136, 138), leftHand: point(122, 195),
+    rightElbow: point(184, 138), rightHand: point(198, 195),
+    leftKnee: point(138, 170), leftFoot: point(120, 195),
+    rightKnee: point(182, 170), rightFoot: point(200, 195)
+  });
+
+  const burpeeJump = pose({
+    // Gestreckter Sprung mit Armen über dem Kopf.
+    head: point(160, 12), neck: point(160, 38), hip: point(160, 98),
+    leftElbow: point(142, 26), leftHand: point(132, 2),
+    rightElbow: point(178, 26), rightHand: point(188, 2),
+    leftKnee: point(153, 132), leftFoot: point(148, 166),
+    rightKnee: point(167, 132), rightFoot: point(172, 166)
+  });
+
   const jackOpen = pose({
-    head: point(160, 34), neck: point(160, 60), hip: point(160, 120),
-    leftElbow: point(125, 68), leftHand: point(92, 42),
-    rightElbow: point(195, 68), rightHand: point(228, 42),
-    leftKnee: point(136, 154), leftFoot: point(110, 195),
-    rightKnee: point(184, 154), rightFoot: point(210, 195)
+    // Arme und Beine sind geöffnet, während die Figur sichtbar in der Luft ist.
+    head: point(160, 22), neck: point(160, 48), hip: point(160, 108),
+    leftElbow: point(124, 56), leftHand: point(90, 26),
+    rightElbow: point(196, 56), rightHand: point(230, 26),
+    leftKnee: point(138, 140), leftFoot: point(108, 180),
+    rightKnee: point(182, 140), rightFoot: point(212, 180)
   });
 
   const highKneeLeft = pose({
@@ -107,19 +126,21 @@
   });
 
   const mountainLeft = pose({
+    // Linkes Knie bis unter die Brust; das rechte Bein bleibt gestreckt.
     head: point(50, 105), neck: point(76, 115), hip: point(175, 127),
     leftElbow: point(88, 150), leftHand: point(92, 195),
     rightElbow: point(103, 150), rightHand: point(108, 195),
-    leftKnee: point(145, 165), leftFoot: point(118, 195),
+    leftKnee: point(122, 128), leftFoot: point(151, 166),
     rightKnee: point(225, 148), rightFoot: point(282, 195)
   });
 
   const mountainRight = pose({
+    // Rechtes Knie bis unter die Brust; das linke Bein bleibt gestreckt.
     head: point(50, 105), neck: point(76, 115), hip: point(175, 127),
     leftElbow: point(88, 150), leftHand: point(92, 195),
     rightElbow: point(103, 150), rightHand: point(108, 195),
     leftKnee: point(220, 150), leftFoot: point(275, 195),
-    rightKnee: point(150, 165), rightFoot: point(123, 195)
+    rightKnee: point(128, 137), rightFoot: point(157, 172)
   });
 
   const lying = pose({
@@ -162,12 +183,22 @@
     rightKnee: point(225, 144), rightFoot: point(265, 195)
   });
 
+  const goodMorningHigh = pose({
+    // Breiter Stand, Hände hinter dem Kopf.
+    head: point(160, 38), neck: point(160, 64), hip: point(160, 125),
+    leftElbow: point(122, 70), leftHand: point(148, 52),
+    rightElbow: point(198, 70), rightHand: point(172, 52),
+    leftKnee: point(138, 160), leftFoot: point(112, 195),
+    rightKnee: point(182, 160), rightFoot: point(208, 195)
+  });
+
   const goodMorningBent = pose({
-    head: point(225, 90), neck: point(202, 102), hip: point(160, 132),
-    leftElbow: point(190, 128), leftHand: point(205, 156),
-    rightElbow: point(202, 120), rightHand: point(220, 146),
-    leftKnee: point(150, 162), leftFoot: point(142, 195),
-    rightKnee: point(170, 162), rightFoot: point(178, 195)
+    // Hüfte bleibt hinten, Oberkörper klappt nach vorn; Hände bleiben am Kopf.
+    head: point(232, 92), neck: point(208, 104), hip: point(160, 130),
+    leftElbow: point(202, 74), leftHand: point(220, 86),
+    rightElbow: point(252, 76), rightHand: point(244, 90),
+    leftKnee: point(138, 162), leftFoot: point(112, 195),
+    rightKnee: point(182, 162), rightFoot: point(208, 195)
   });
 
   const pikeHigh = pose({
@@ -229,12 +260,23 @@
   const sidePlankRightHigh = mirror(sidePlankLeftHigh);
   const sidePlankRightLow = mirror(sidePlankLeftLow);
 
-  const tRotation = pose({
-    head: point(70, 102), neck: point(94, 116), hip: point(180, 144),
-    leftElbow: point(105, 154), leftHand: point(108, 195),
-    rightElbow: point(115, 75), rightHand: point(112, 34),
-    leftKnee: point(228, 165), leftFoot: point(278, 195),
-    rightKnee: point(234, 160), rightFoot: point(288, 195)
+  const tRotationLeft = pose({
+    // Aus der hohen Planke: rechter Arm trägt, linker Arm zeigt nach oben.
+    // Kopf, Schulterlinie und Hüfte heben sich etwas mit der Körperrotation.
+    head: point(62, 94), neck: point(88, 108), hip: point(180, 142),
+    leftElbow: point(91, 72), leftHand: point(88, 30),
+    rightElbow: point(108, 154), rightHand: point(112, 195),
+    leftKnee: point(228, 164), leftFoot: point(278, 195),
+    rightKnee: point(234, 158), rightFoot: point(288, 195)
+  });
+
+  const tRotationRight = pose({
+    // Zurück in die Planke und anschließend die andere Seite öffnen.
+    head: point(62, 98), neck: point(88, 112), hip: point(180, 144),
+    leftElbow: point(103, 154), leftHand: point(106, 195),
+    rightElbow: point(126, 76), rightHand: point(132, 32),
+    leftKnee: point(228, 164), leftFoot: point(278, 195),
+    rightKnee: point(234, 158), rightFoot: point(288, 195)
   });
 
   const diamondHigh = pose({
@@ -269,12 +311,12 @@
     "mountain-climber": frames(330, mountainLeft, mountainRight),
     "glute-bridge": frames(700, bridgeLow, bridgeHigh),
     "high-knees": frames(300, highKneeLeft, highKneeRight),
-    "t-rotation-plank": frames(800, plankHigh, tRotation, plankHigh, mirror(tRotation)),
+    "t-rotation-plank": frames(700, plankHigh, tRotationLeft, plankHigh, tRotationRight),
     "jumping-jacks": frames(430, standing, jackOpen),
     "side-plank-left": frames(900, sidePlankLeftHigh, sidePlankLeftLow),
-    "burpees": frames(360, standing, crouch, plankHigh, crouch, jump, standing),
+    "burpees": frames(310, standing, burpeeSquat, plankHigh, plankLow, plankHigh, burpeeSquat, burpeeJump, standing),
     "side-plank-right": frames(900, sidePlankRightHigh, sidePlankRightLow),
-    "good-mornings": frames(750, standing, goodMorningBent),
+    "good-mornings": frames(750, goodMorningHigh, goodMorningBent),
     "pike-push-up": frames(700, pikeHigh, pikeLow),
     "diamond-push-up": frames(700, diamondHigh, diamondLow),
     "sit-ups": frames(800, sitUpLow, sitUpHigh)

@@ -1,4 +1,4 @@
-const CACHE = 'training-pwa-v2';
+const CACHE = 'training-pwa-v3';
 
 const ASSETS = [
   '.',
