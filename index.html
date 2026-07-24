@@ -8,16 +8,29 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <div id="container" style="text-align: center; padding: 2rem;">
-    <h1 id="exercise" style="font-size: 2rem; margin-bottom: 0.5rem;"></h1>
-    <p id="info" style="font-size: 1.5rem; margin: 0.5rem;"></p>
-    <p id="time" style="font-size: 2.5rem; margin: 1.5rem 0;"></p>
+  <div id="container">
+    <h1 id="exercise"></h1>
+    <p id="info"></p>
+
+    <div id="animation" aria-hidden="true">
+      <svg id="stickFigure" viewBox="0 0 320 220" role="img">
+        <line id="ground" x1="25" y1="198" x2="295" y2="198"></line>
+        <circle id="figureHead" r="12"></circle>
+        <line id="figureTorso"></line>
+        <polyline id="figureLeftArm"></polyline>
+        <polyline id="figureRightArm"></polyline>
+        <polyline id="figureLeftLeg"></polyline>
+        <polyline id="figureRightLeg"></polyline>
+      </svg>
+    </div>
+
+    <p id="time"></p>
     <button id="startBtn">Los geht's!</button>
-    <button id="restartBtn" style="display: none; font-size: 2rem; margin-top: 2rem;">Neu starten</button>
-	
+    <button id="restartBtn">Neu starten</button>
   </div>
 
   <script src="data.js"></script>
+  <script src="animation.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

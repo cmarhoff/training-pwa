@@ -1,4 +1,4 @@
-// app.js – überarbeitete Version mit 3-Spalten-Datenmodell und klarer Oberfläche
+// app.js – Trainingsablauf und Synchronisation der Übungsanimation
 
 document.addEventListener("DOMContentLoaded", () => {
   let current = 0;
@@ -14,21 +14,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showExercise() {
     if (current >= exercises.length) {
-    exerciseDisplay.textContent = "Fertig!";
-    infoDisplay.textContent = "";
-    timeDisplay.textContent = "";
-    button.style.display = "none";
-    restartButton.style.display = "inline-block";
-    return;
+      stopExerciseAnimation();
+      exerciseDisplay.textContent = "Fertig!";
+      infoDisplay.textContent = "";
+      timeDisplay.textContent = "";
+      button.style.display = "none";
+      restartButton.style.display = "inline-block";
+      return;
     }
+
     const ex = exercises[current];
 
     exerciseDisplay.textContent = ex.name;
-    exerciseDisplay.style.fontSize = "3rem";
     infoDisplay.textContent = ex.display;
-    infoDisplay.style.fontSize = "2.5rem";
     timeDisplay.textContent = ex.initial;
-    timeDisplay.style.fontSize = "2rem";
 
     counter = ex.initial;
     countingUp = ex.initial === 0;
@@ -36,16 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
     button.textContent = "Start";
     button.classList.remove("running");
     button.classList.add("ready");
-    button.style.fontSize = "3rem";
-    button.style.padding = "2rem 4rem";
+
+    startExerciseAnimation(ex.animation);
   }
 
   function startTimer() {
     button.classList.remove("ready");
     button.classList.add("running");
     button.textContent = "Stop";
-    button.style.fontSize = "3rem";
-    button.style.padding = "2rem 4rem";
 
     if (countingUp) {
       counter = 0;
@@ -83,13 +80,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  showExercise();
-
   restartButton.addEventListener('click', () => {
     current = 0;
     restartButton.style.display = "none";
     button.style.display = "inline-block";
     showExercise();
   });
-});
 
+  showExercise();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .catch(error => console.log("Service Worker konnte nicht registriert werden:", error));
+  }
+});
