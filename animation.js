@@ -278,16 +278,16 @@
     rightKnee: point(224, 149), rightFoot: point(264, 195)
   });
 
-  const sidePlankLeftHigh = pose({
+  const sidePlankRightHigh = pose({
     // Stützender Unterarm liegt vollständig am Boden, freier Arm parallel zum Körper.
     head: point(58, 108), neck: point(84, 122), hip: point(176, 150),
     leftElbow: point(96, 170), leftHand: point(74, 195),
-    rightElbow: point(132, 134), rightHand: point(170, 146),
+    rightElbow: point(133, 125), rightHand: point(173, 131),
     leftKnee: point(226, 168), leftFoot: point(276, 195),
     rightKnee: point(232, 164), rightFoot: point(286, 195)
   });
 
-  const sidePlankLeftLow = pose({
+  const sidePlankRightLow = pose({
     head: point(58, 116), neck: point(84, 130), hip: point(176, 164),
     leftElbow: point(96, 174), leftHand: point(74, 195),
     rightElbow: point(132, 146), rightHand: point(170, 158),
@@ -303,8 +303,8 @@
     return mirrored;
   };
 
-  const sidePlankRightHigh = mirror(sidePlankLeftHigh);
-  const sidePlankRightLow = mirror(sidePlankLeftLow);
+  const sidePlankLeftHigh = mirror(sidePlankRightHigh);
+  const sidePlankLeftLow = mirror(sidePlankRightLow);
 
   const tRotationLeft = pose({
     // Aus der hohen Planke: rechter Arm trägt, linker Arm zeigt nach oben.
