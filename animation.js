@@ -290,7 +290,7 @@
   const sidePlankRightLow = pose({
     head: point(58, 116), neck: point(84, 130), hip: point(176, 164),
     leftElbow: point(96, 174), leftHand: point(74, 195),
-    rightElbow: point(132, 146), rightHand: point(170, 158),
+    rightElbow: point(128, 154), rightHand: point(173, 143),
     leftKnee: point(226, 176), leftFoot: point(276, 195),
     rightKnee: point(232, 172), rightFoot: point(286, 195)
   });
