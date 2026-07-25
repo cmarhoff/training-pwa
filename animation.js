@@ -125,6 +125,22 @@
     rightKnee: point(230, 164), rightFoot: point(282, 195)
   });
 
+  const forearmPlank = pose({
+    head: point(52, 114), neck: point(78, 123), hip: point(178, 131),
+    leftElbow: point(108, 154), leftHand: point(88, 195),
+    rightElbow: point(124, 154), rightHand: point(104, 195),
+    leftKnee: point(226, 150), leftFoot: point(278, 195),
+    rightKnee: point(232, 148), rightFoot: point(286, 195)
+  });
+
+  const forearmPlankDip = pose({
+    head: point(52, 118), neck: point(78, 127), hip: point(178, 136),
+    leftElbow: point(108, 156), leftHand: point(88, 195),
+    rightElbow: point(124, 156), rightHand: point(104, 195),
+    leftKnee: point(226, 154), leftFoot: point(278, 195),
+    rightKnee: point(232, 152), rightFoot: point(286, 195)
+  });
+
   const mountainLeft = pose({
     // Linkes Knie bis unter die Brust; das rechte Bein bleibt gestreckt.
     head: point(50, 105), neck: point(76, 115), hip: point(175, 127),
@@ -218,35 +234,38 @@
   });
 
   const sitUpLow = pose({
-    head: point(48, 164), neck: point(75, 172), hip: point(160, 176),
-    leftElbow: point(105, 145), leftHand: point(126, 128),
-    rightElbow: point(108, 151), rightHand: point(132, 138),
-    leftKnee: point(215, 140), leftFoot: point(250, 195),
-    rightKnee: point(225, 143), rightFoot: point(265, 195)
+    // Gesäß bleibt am Boden, Knie gebeugt.
+    head: point(48, 167), neck: point(76, 174), hip: point(160, 184),
+    leftElbow: point(102, 152), leftHand: point(122, 138),
+    rightElbow: point(108, 158), rightHand: point(132, 146),
+    leftKnee: point(214, 146), leftFoot: point(248, 195),
+    rightKnee: point(224, 149), rightFoot: point(264, 195)
   });
 
   const sitUpHigh = pose({
-    head: point(126, 70), neck: point(140, 94), hip: point(160, 176),
-    leftElbow: point(168, 112), leftHand: point(198, 126),
-    rightElbow: point(165, 122), rightHand: point(195, 138),
-    leftKnee: point(215, 140), leftFoot: point(250, 195),
-    rightKnee: point(225, 143), rightFoot: point(265, 195)
+    // Auch oben bleibt das Gesäß unten; nur der Oberkörper richtet sich auf.
+    head: point(126, 86), neck: point(138, 110), hip: point(160, 184),
+    leftElbow: point(164, 126), leftHand: point(190, 136),
+    rightElbow: point(160, 136), rightHand: point(188, 148),
+    leftKnee: point(214, 146), leftFoot: point(248, 195),
+    rightKnee: point(224, 149), rightFoot: point(264, 195)
   });
 
   const sidePlankLeftHigh = pose({
-    head: point(58, 102), neck: point(82, 116), hip: point(174, 146),
-    leftElbow: point(98, 156), leftHand: point(103, 195),
-    rightElbow: point(80, 75), rightHand: point(76, 35),
-    leftKnee: point(225, 166), leftFoot: point(275, 195),
-    rightKnee: point(230, 160), rightFoot: point(284, 195)
+    // Stützender Unterarm liegt vollständig am Boden, freier Arm parallel zum Körper.
+    head: point(58, 108), neck: point(84, 122), hip: point(176, 150),
+    leftElbow: point(96, 170), leftHand: point(74, 195),
+    rightElbow: point(132, 134), rightHand: point(170, 146),
+    leftKnee: point(226, 168), leftFoot: point(276, 195),
+    rightKnee: point(232, 164), rightFoot: point(286, 195)
   });
 
   const sidePlankLeftLow = pose({
-    head: point(58, 112), neck: point(82, 126), hip: point(174, 164),
-    leftElbow: point(98, 166), leftHand: point(103, 195),
-    rightElbow: point(80, 82), rightHand: point(76, 42),
-    leftKnee: point(225, 174), leftFoot: point(275, 195),
-    rightKnee: point(230, 170), rightFoot: point(284, 195)
+    head: point(58, 116), neck: point(84, 130), hip: point(176, 164),
+    leftElbow: point(96, 174), leftHand: point(74, 195),
+    rightElbow: point(132, 146), rightHand: point(170, 158),
+    leftKnee: point(226, 176), leftFoot: point(276, 195),
+    rightKnee: point(232, 172), rightFoot: point(286, 195)
   });
 
   const mirror = original => {
@@ -304,17 +323,23 @@
     "flutter-kicks": frames(260, flutterA, flutterB),
     "push-ups": frames(700, plankHigh, plankLow),
     "vertical-jumps": frames(450, standing, crouch, jump, standing),
-    "plank": frames(900, plankHigh, {
-      ...plankHigh,
-      head: point(50, 108), neck: point(76, 118), hip: point(175, 130)
-    }),
+    "plank": frames(900, forearmPlank, forearmPlankDip),
     "mountain-climber": frames(330, mountainLeft, mountainRight),
     "glute-bridge": frames(700, bridgeLow, bridgeHigh),
     "high-knees": frames(300, highKneeLeft, highKneeRight),
     "t-rotation-plank": frames(700, plankHigh, tRotationLeft, plankHigh, tRotationRight),
     "jumping-jacks": frames(430, standing, jackOpen),
     "side-plank-left": frames(900, sidePlankLeftHigh, sidePlankLeftLow),
-    "burpees": frames(310, standing, burpeeSquat, plankHigh, plankLow, plankHigh, burpeeSquat, burpeeJump, standing),
+    "burpees": [
+      { pose: standing, duration: 520 },
+      { pose: burpeeSquat, duration: 620 },
+      { pose: plankHigh, duration: 520 },
+      { pose: plankLow, duration: 520 },
+      { pose: plankHigh, duration: 520 },
+      { pose: burpeeSquat, duration: 620 },
+      { pose: burpeeJump, duration: 460 },
+      { pose: standing, duration: 520 }
+    ],
     "side-plank-right": frames(900, sidePlankRightHigh, sidePlankRightLow),
     "good-mornings": frames(750, goodMorningHigh, goodMorningBent),
     "pike-push-up": frames(700, pikeHigh, pikeLow),
