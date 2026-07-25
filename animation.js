@@ -66,22 +66,49 @@
     rightKnee: point(180, 132), rightFoot: point(198, 150)
   });
 
-  const burpeeSquat = pose({
-    // Tiefe Hocke, beide Hände am Boden.
-    head: point(160, 72), neck: point(160, 96), hip: point(160, 145),
-    leftElbow: point(136, 138), leftHand: point(122, 195),
-    rightElbow: point(184, 138), rightHand: point(198, 195),
-    leftKnee: point(138, 170), leftFoot: point(120, 195),
-    rightKnee: point(182, 170), rightFoot: point(200, 195)
+  const burpeeStandSide = pose({
+    // Reine Seitenansicht, Blickrichtung nach links.
+    head: point(138, 38), neck: point(150, 64), hip: point(168, 126),
+    leftElbow: point(145, 94), leftHand: point(150, 132),
+    rightElbow: point(153, 94), rightHand: point(158, 132),
+    leftKnee: point(157, 160), leftFoot: point(150, 195),
+    rightKnee: point(176, 160), rightFoot: point(181, 195)
   });
 
-  const burpeeJump = pose({
-    // Gestreckter Sprung mit Armen über dem Kopf.
-    head: point(160, 12), neck: point(160, 38), hip: point(160, 98),
-    leftElbow: point(142, 26), leftHand: point(132, 2),
-    rightElbow: point(178, 26), rightHand: point(188, 2),
-    leftKnee: point(153, 132), leftFoot: point(148, 166),
-    rightKnee: point(167, 132), rightFoot: point(172, 166)
+  const burpeeSquatSide = pose({
+    // Tiefe Hocke. Arme gestreckt; beide Hände liegen bereits am Boden.
+    head: point(105, 92), neck: point(126, 108), hip: point(171, 151),
+    leftElbow: point(106, 150), leftHand: point(88, 195),
+    rightElbow: point(116, 151), rightHand: point(98, 195),
+    leftKnee: point(143, 174), leftFoot: point(151, 195),
+    rightKnee: point(178, 176), rightFoot: point(184, 195)
+  });
+
+  const burpeePlankSide = pose({
+    // Füße hinten, Arme gestreckt. Die Hände bleiben an derselben Stelle.
+    head: point(64, 112), neck: point(91, 123), hip: point(190, 136),
+    leftElbow: point(91, 159), leftHand: point(88, 195),
+    rightElbow: point(101, 159), rightHand: point(98, 195),
+    leftKnee: point(233, 157), leftFoot: point(282, 195),
+    rightKnee: point(239, 154), rightFoot: point(289, 195)
+  });
+
+  const burpeePushUpLowSide = pose({
+    // Liegestütz unten. Hände bleiben unverändert am Boden.
+    head: point(61, 151), neck: point(88, 157), hip: point(190, 160),
+    leftElbow: point(112, 174), leftHand: point(88, 195),
+    rightElbow: point(122, 174), rightHand: point(98, 195),
+    leftKnee: point(234, 171), leftFoot: point(282, 195),
+    rightKnee: point(240, 168), rightFoot: point(289, 195)
+  });
+
+  const burpeeJumpSide = pose({
+    // Gestreckter Sprung in Seitenansicht, Arme ebenfalls gestreckt nach oben.
+    head: point(140, 14), neck: point(151, 40), hip: point(168, 101),
+    leftElbow: point(137, 24), leftHand: point(127, 1),
+    rightElbow: point(145, 25), rightHand: point(136, 2),
+    leftKnee: point(158, 135), leftFoot: point(153, 168),
+    rightKnee: point(176, 135), rightFoot: point(180, 168)
   });
 
   const jackOpen = pose({
@@ -331,14 +358,14 @@
     "jumping-jacks": frames(430, standing, jackOpen),
     "side-plank-left": frames(900, sidePlankLeftHigh, sidePlankLeftLow),
     "burpees": [
-      { pose: standing, duration: 520 },
-      { pose: burpeeSquat, duration: 620 },
-      { pose: plankHigh, duration: 520 },
-      { pose: plankLow, duration: 520 },
-      { pose: plankHigh, duration: 520 },
-      { pose: burpeeSquat, duration: 620 },
-      { pose: burpeeJump, duration: 460 },
-      { pose: standing, duration: 520 }
+      { pose: burpeeStandSide, duration: 700 },
+      { pose: burpeeSquatSide, duration: 800 },
+      { pose: burpeePlankSide, duration: 750 },
+      { pose: burpeePushUpLowSide, duration: 650 },
+      { pose: burpeePlankSide, duration: 650 },
+      { pose: burpeeSquatSide, duration: 800 },
+      { pose: burpeeJumpSide, duration: 650 },
+      { pose: burpeeStandSide, duration: 700 }
     ],
     "side-plank-right": frames(900, sidePlankRightHigh, sidePlankRightLow),
     "good-mornings": frames(750, goodMorningHigh, goodMorningBent),
