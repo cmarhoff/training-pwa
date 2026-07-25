@@ -1,11 +1,11 @@
-const CACHE = 'training-pwa-v4';
+const CACHE = 'training-pwa-v5';
 
 const ASSETS = [
   '.',
   'index.html',
   'style.css',
   'data.js',
-  'animation.js',
+  'animation.js?v=5',
   'app.js',
   'manifest.json'
 ];
